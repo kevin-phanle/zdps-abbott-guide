@@ -1,7 +1,7 @@
 {
-  "name": "Copenhagen",
+  "name": "Abbott Guide Theme",
   "author": "Zendesk",
-  "version": "2.10.0",
+  "version": "2.10.1",
   "api_version": 2,
   "default_locale": "en-us",
   "settings": [
@@ -13,14 +13,14 @@
           "type": "color",
           "description": "brand_color_description",
           "label": "brand_color_label",
-          "value": "#17494D"
+          "value": "#004F71"
         },
         {
           "identifier": "brand_text_color",
           "type": "color",
           "description": "brand_text_color_description",
           "label": "brand_text_color_label",
-          "value": "#FFFFFF"
+          "value": "#009CDE"
         },
         {
           "identifier": "text_color",
@@ -217,7 +217,7 @@
           "type": "checkbox",
           "description": "show_brand_name_description",
           "label": "show_brand_name_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "favicon",

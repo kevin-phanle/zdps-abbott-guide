@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/26-chevron</title>
+    <defs>
+        <path d="M9.67882251,10.3211775 C9.30391919,9.94627417 8.69608081,9.94627417 8.32117749,10.3211775 C7.94627417,10.6960808 7.94627417,11.3039192 8.32117749,11.6788225 L12.3211775,15.6788225 C12.6960808,16.0537258 13.3039192,16.0537258 13.6788225,15.6788225 L17.6788225,11.6788225 C18.0537258,11.3039192 18.0537258,10.6960808 17.6788225,10.3211775 C17.3039192,9.94627417 16.6960808,9.94627417 16.3211775,10.3211775 L13,13.642355 L9.67882251,10.3211775 Z" id="path-1"></path>
+    </defs>
+    <g id="icon/26-chevron" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="large-chevron" fill="#FFFFFF" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="Group" mask="url(#mask-2)" fill="#68737D">
+            <g id="⌙-🌈-color">
+                <rect id="fill" x="0" y="0" width="26" height="26"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

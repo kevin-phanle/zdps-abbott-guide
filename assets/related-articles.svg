@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="277px" height="242px" viewBox="0 0 277 242" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Container</title>
+    <g id="First-Round-Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Article-Page" transform="translate(-923.000000, -353.000000)" fill="#3C1053">
+            <g id="Related-Articles" transform="translate(922.500000, 353.000000)">
+                <path d="M3.99218168,0 L274.5,0 C276.156854,-3.04359188e-16 277.5,1.34314575 277.5,3 L277.5,242 L277.5,242 C273.287838,226.071466 242.693634,218.107199 185.717388,218.107199 C137.950052,218.107199 94.0448681,218.107199 40.2199109,218.107199 C13.7399703,218.107199 0.5,209.273732 0.5,191.606797 L0.992191896,2.99217149 C0.996507485,1.33837928 2.33838383,-7.68980804e-15 3.99218168,0 Z" id="Container"></path>
+            </g>
+        </g>
+    </g>
+</svg>

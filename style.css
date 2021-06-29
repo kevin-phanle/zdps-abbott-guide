@@ -811,6 +811,7 @@ ul {
   right: auto;
 }
 
+
 /***** User info in header *****/
 .user-info {
   display: inline-block;
@@ -4719,4 +4720,407 @@ html[dir="rtl"] .notification-left-aligned {
 
 .dropdown-chevron-icon {
   vertical-align: middle;
+}
+
+/* *****CUSTOM STYLING****** */ 
+
+
+/* HEADER */
+
+/* HEADER WRAPPERs */
+
+.header-wrapper, .header-top-wrapper, .header-categories-wrapper {
+  width: 100%;
+}
+
+.header-top-wrapper {
+  background-color: black;
+}
+
+.header-wrapper {
+  background-color: $brand_color;
+}
+
+.header-categories-wrapper {
+  background-color: #D9D9D6;
+}
+
+/* HEADER TOP */
+
+.header-top {
+  height: 35px;
+  max-width: 1160px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0 auto;
+  font-family: brandon-grotesque, sans-serif;
+  font-size: 12px;
+}
+
+.header-top-link-list {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.header-top-link-list > * {
+  margin: 0 15px;
+}
+
+.header-top-link a {
+  color: white;
+  text-transform: uppercase;
+  /* margin: 0 15px; */
+}
+
+.header-top .user-name, .header-locale-selector {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-transform: uppercase;
+}
+
+.dropdown-menu {
+  border: none;
+  background: black;
+}
+
+.dropdown-menu [role="menuitem"] {
+  color: white;
+}
+
+.dropdown-menu [role="menuitem"]:hover, .dropdown-menu [role="menuitem"]:focus {
+  background: lighten(#000, 60%);
+  color: white;
+}
+
+.dropdown-toggle {
+  vertical-align: unset;
+}
+
+.user-avatar {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+}
+
+/* HEADER MID */
+
+.header {
+  max-width: 1160px;  
+  width: 80%;
+  font-family: brandon grotesque, sans-serif;
+}
+
+.header-content {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .logo span {
+  color: white;
+}
+
+.nav-wrapper .header-service-center {
+  color: white;
+  text-transform: uppercase;
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.nav-wrapper a {
+  padding: unset;
+  margin: 2rem;
+}
+
+#query {
+  background: transparent;
+  border-radius: 5px;
+  text-transform: uppercase;
+  color: white;
+  padding-left: 20px;
+}
+
+#query::placeholder {
+  color: white;
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px;
+  left: unset;
+  color: #999;
+}
+
+.nav-wrapper .header-service-center:hover,
+.nav-wrapper .header-service-center:focus {
+  color: white;
+}
+
+/* HEADER BOTTOM CATEGORIES */
+
+.header-categories {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 1160px;
+  font-family: brandon grotesque, sans-serif;
+}
+
+@media (max-width: 1160px) {
+  .header-categories {
+    width: 90%;
+  }
+}
+
+.header-nav {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.header-nav li {
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.header-nav li a {
+  color: black;
+  text-decoration: none;
+}
+
+.header-nav li a:hover, 
+.header-nav li a:focus {
+  color: $brand_text_color;
+}
+
+/* HERO */
+
+.hero {
+  padding: unset;
+  width: 80%;
+  height: 380px;
+  margin: 0 auto 1rem;
+}
+
+@media (max-width: 1160px) {
+  .hero {
+    width: 90%;
+    height: 341px;
+  }
+}
+
+.hero-inner {
+  margin-left: 100px;
+}
+
+.hero-inner h1 {
+  color: white;
+  font-size: 64px;
+  text-align: left;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.hero-inner .search {
+  background: white;
+  border-radius: 5px;
+  color: black;
+}
+
+.hero-inner .search::placeholder {
+  color: black;
+}
+
+/* CATEGORY PAGE */
+
+#category-hero {
+  width: unset;
+}
+
+.container {
+  width: 80%;
+}
+
+@media (max-width: 1160px) {
+  .container {
+    width: unset;
+  }
+}
+
+.section-tree {
+  display: block;
+}
+
+
+@media (min-width: 768px) {
+  .section-tree {
+    flex-direction: column;
+  }
+}
+
+.section-tree-title {
+  border-bottom: 2px solid #D9D9D6;
+  width: 50%;
+  padding-bottom: 0.2rem;
+  display: flex;
+}
+
+.section-tree-title a {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.category-container {
+  justify-content: unset;
+}
+
+.article-list-item {
+  margin-left: 1rem;
+}
+
+.see-all-articles {
+  color: $brand_text_color;
+}
+
+.icon-star {
+  color: #D8D8D8;
+}
+
+.icon-star {
+  stroke: #979797;
+}
+
+/* BREADCRUMBS */
+
+.sub-nav {
+  margin: unset;
+  min-height: unset;
+  padding: unset;
+  display: unset;
+}
+
+.breadcrumbs li {
+  text-transform: uppercase;
+}
+
+.breadcrumbs li a {
+  color: grey !important;
+}
+
+/* PAGE HEADER */
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  color: $brand_text_color;
+  font-size: 48px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: unset;
+}
+
+.page-header p {
+  color: #888B8D;
+  font-style: unset;
+}
+
+/* SECTION PAGE */
+
+.section-container {
+  display: unset;
+}
+
+/* ARTICLE PAGE */
+
+.article-container {
+  justify-content: space-between;
+}
+
+.article {
+  padding: unset;
+}
+
+.meta-data:not(:last-child)::after {
+  content: "";
+  margin: unset;
+}
+
+.article-relatives, .article-votes {
+  border-top: unset;
+}
+
+.article-relatives > * {
+  flex: unset;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .article-relatives {
+      flex-direction: column;
+  }
+
+  .article-relatives > * {
+    padding-right: unset;
+  }
+}
+
+.related-relative, .recent-relative {
+  position: relative;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.related-relative {
+  background: #3C1053;
+}
+
+.recent-relative {
+  background-color: #00B140;
+}
+
+
+.related-relative img, .recent-relative img {
+  position: absolute;
+  bottom: -.3%;
+  left: 0;
+  width: 100%;
+}
+
+.related-articles, .recent-articles {
+  width: 100%;
+  color: white;
+  padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+}
+
+.related-articles ul li a, .recent-articles ul li a {
+  color: white;
+}
+
+.related-articles-title, .recent-articles-title {
+  color: black;
+  background: white;
+  text-align: center;
+}
+
+.related-articles-title:before {
+  height: 50px;
+  border-bottom: 1px solid white;
 }
