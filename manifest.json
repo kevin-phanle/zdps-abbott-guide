@@ -1,5 +1,5 @@
 {
-  "name": "Abbott Guide Theme",
+  "name": "Abbott Guide Theme Zendesk Development",
   "author": "Zendesk",
   "version": "2.10.1",
   "api_version": 2,
@@ -27,7 +27,7 @@
           "type": "color",
           "description": "text_color_description",
           "label": "text_color_label",
-          "value": "#2F3941"
+          "value": "#888B8D"
         },
         {
           "identifier": "link_color",
@@ -237,6 +237,12 @@
           "label": "homepage_background_image_label"
         },
         {
+          "identifier": "hero_alt_background_image",
+          "type": "file",
+          "description": "hero_alt_image_description",
+          "label": "hero_alt_background_image_label"
+        },
+        {
           "identifier": "community_background_image",
           "type": "file",
           "description": "community_background_image_description",
@@ -382,6 +388,36 @@
           "description": "follow_topic_description",
           "label": "follow_topic_label",
           "value": true
+        }
+      ]
+    },
+    {
+      "label": "Custom settings",
+      "variables": [
+        {
+          "identifier": "phone_numbers_article_id",
+          "type": "text",
+          "description": "Phone numbers article ID",
+          "label": "Phone numbers article ID",
+          "value": "360061076592"
+        },
+        {
+          "identifier": "icon_my_requests",
+          "type": "file",
+          "description": "Icon for My Requests",
+          "label": "Main Page -- My Requests Icon"
+        },
+        {
+          "identifier": "icon_phone_numbers",
+          "type": "file",
+          "description": "Icon for Phone Numbers",
+          "label": "Main Page -- Phone Numbers Icon"
+        },
+        {
+          "identifier": "icon_get_support",
+          "type": "file",
+          "description": "Icon for Get Support",
+          "label": "Main Page -- Get Support Icon"
         }
       ]
     }

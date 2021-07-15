@@ -401,6 +401,83 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // CUSTOM SCRIPT FOR ABBOTT
+
+  const mainPageContainer = document.querySelector("#main-page-container");
+  const headerSearch = document.querySelector("#header-search");
+  const promotedArticlesTitle = document.getElementById("promoted-articles-title");
+  const seeAllArticles = document.getElementsByClassName("see-all-articles");
+  const sectionTreeTitles = document.getElementsByClassName("section-tree-title");
+  const requestsHeading = document.getElementById("requests-heading");
+  const searchbar = document.getElementsByName("query");
+  const recentArticlesTitle = document.querySelector(".recent-articles-title");
+  const searchSubHeading = document.querySelector(".search-results-subheading");
+  const categoryContainer = document.querySelector('.category-container');
+  const breadcrumbs = document.querySelector('.breadcrumbs');
+  const requestsSearch = document.querySelector('.requests-search');
+
+  // ADD A LINK TO THE BREADCRUMB ON CATEGORY PAGE
+  if (categoryContainer) {
+    const crumb = [...breadcrumbs.children][1];
+    const text = crumb.innerText;
+    const anchor = document.createElement('a');
+    anchor.innerText = text;
+    anchor.setAttribute('href', "javascript:window.location.reload();");
+    crumb.innerText = "";
+    crumb.appendChild(anchor);
+  }
+
+  // FOR SECTION TREE ACCORDIAN IN CATEGORY PAGE
+  for (let i=0; i <sectionTreeTitles?.length; i++ )[
+    sectionTreeTitles[i].addEventListener("click", function() {
+
+      this.classList.toggle("active")
+      const articleList = this.nextElementSibling;
+      if (articleList.style.display === "block") {
+        articleList.style.display = "none";
+      } else {
+        articleList.style.display = "block";
+        seeAllArticles[0].style.display = "block ";
+        
+        articleList.style.maxHeight = articleList.scrollHeight + "px";
+      }
+    })
+  ]
+
+  // CHANGING TEXT IN HELPERS
+  if (searchSubHeading) {
+    searchSubHeading.innerText = searchSubHeading.innerText.replace('IN ALL CATEGORIES', '');
+  }
+
+  if (requestsHeading) {
+    requestsHeading.innerText = "My Cases"
+    requestsSearch.placeholder = "SEARCH MY REQUESTS"
+  }
+
+  if (seeAllArticles.length > 0) {
+    seeAllArticles[0].innerText = "See More";
+  }
+
+  if (promotedArticlesTitle) {
+    promotedArticlesTitle.innerText = "Trending Topics"
+  }
+
+  if (recentArticlesTitle) {
+    recentArticlesTitle.innerText = "Recently viewed"
+  }
+
   
+
+  // REMOVING SEARCHBAR IN HEADER ON THE MAINPAGE
+  if (mainPageContainer) {
+    headerSearch.remove();
+    searchbar[0].placeholder = "search hr service center";
+  } else {
+    searchbar[0].placeholder = "search"
+  }  
+
+  // zE('webWidget:on', 'open', function() {
+  //   console.log('The widget has been opened!');
+  // });
 
 });

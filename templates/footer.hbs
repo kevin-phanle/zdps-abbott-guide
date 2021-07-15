@@ -1,26 +1,69 @@
 <footer class="footer">
   <div class="footer-inner">
-    {{#link 'help_center'}}{{help_center.name}}{{/link}}
+    <div class="footer-inner-top">
+      <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}" />
 
-    <div class="footer-language-selector">
-      {{#if alternative_locales}}
-      <div class="dropdown language-selector">
-        <button class="dropdown-toggle" aria-haspopup="true">
-          {{current_locale.name}}
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12"
-            class="dropdown-chevron-icon">
-            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5" />
-          </svg>
-        </button>
-        <span class="dropdown-menu dropdown-menu-end" role="menu" aria-expanded="false">
-          {{#each alternative_locales}}
-          <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
-            {{name}}
-          </a>
-          {{/each}}
-        </span>
-      </div>
-      {{/if}}
+      <nav class="footer-nav-links">
+        <ul>
+          <li>
+            <a href="https://abbott.sharepoint.com/sites/abbottworld/Home.aspx">
+              {{dc 'abbott_world' }}
+            </a>
+          </li>
+          <li class="footer-link-us-pr-only">
+            <a href="https://go.abbott.com/alightmfa">
+              {{ dc 'abbott_benefit_center'}}
+            </a>
+          </li>
+          <li class="footer-link-us-pr-only">
+            <a
+              href="https://abbott.sharepoint.com/sites/abbottworld/payroll/Pages/Home.aspx?icid=AW_MN_RES_CorpPayroll">
+              {{ dc 'abbott_payroll'}}
+            </a>
+          </li>
+          <li>
+            <a href="https://www.fieldglass.net/SSOLogin?TARGET=company%3DABO">
+              {{ dc 'fieldglass'}}
+            </a>
+          </li>
+
+          <li>
+            <a href="http://myhr.abbott.com/">
+              {{ dc 'myhr_portal'}}
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://abbott.sharepoint.com/sites/gis-home/ITCS/SitePages/Welcome%20to%20the%20Global%20Service%20Desk.aspx?AW_MN_RES_GlobalServiceDesk">
+              {{ dc 'global_service_desk'}}
+            </a>
+          </li>
+          <li class="footer-link-us-pr-only">
+            <a href="https://ess.sjm.com/irj/portal">
+              {{ dc 'sjm_payroll'}}
+            </a>
+          </li>
+          <li>
+            <a href="https://fuel50careerdrive.com/saml/login/alias/abbott-sp">
+              {{ dc 'career_connect'}}
+            </a>
+          </li>
+          <li>
+            <a href="https://wd5.myworkday.com/wday/authgwy/abbott/login.htmld">
+              {{ dc 'workday'}}
+            </a>
+          </li>
+          <li>
+            <a href="http://go.abbott.com/globoforce?AW_MN_Res_2_ExcellenceAwards">
+              {{ dc 'abbott_excellence_awards'}}
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div> <!-- footer inner top -->
+
+    <div class="footer-inner-bottom">
+      {{ dc 'footer_disclaimer' }}
     </div>
   </div>
 </footer>

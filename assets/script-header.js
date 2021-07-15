@@ -4,14 +4,18 @@ const template = `
     <nav role="navigation" class="header-categories">
       <ul class="header-nav">
         <li
-          v-for="(category, index) in categories"
-          :key="category.id">
-          <a href="">
+          class="header-category-container"
+          v-for="(category, index) in categories" v-if="category.show"
+          :key="category.id"
+          @mouseover="category.showSections = true" @mouseleave="category.showSections = false"
+          >
+          <a :href="category.html_url" class="header-category-name" :class="{ 'header-category-name-show': category.showSections }">
             {{category.name}}
           </a>
-          <ul>
-            <li>
-              <a href="">
+          <ul class="header-sections" v-if="category.showSections">
+            <li v-for="(section, index) in category.sections">
+              <a :href="section.html_url">
+              {{section.name}}
               </a>
             </li>
           </ul>
@@ -25,69 +29,92 @@ const Header = {
   template,
   data() {
     return {
-      categories: [
-        {
-          name: "Personal & Employee Data Changes",
-          link: "paylink",
-          sections: [
-            {
-              name: "Section Page",
-              link: "sectionlink",
-            }
-          ]
-        },
-        {
-          name: "Talent Development & Performance",
-          link: "benefitsandleave",
-          sections: [
-            {
-              name: "section page"
-            }
-          ]
-        },
-        {
-          name: "Pay & Incentives",
-          link: "benefitsandleave",
-          sections: [
-            {
-              name: "section page"
-            }
-          ]
-        },
-        {
-          name: "Benefits & Leave",
-          link: "benefitsandleave",
-          sections: [
-            {
-              name: "section page"
-            }
-          ]
-        },
-        {
-          name: "Employee relations",
-          link: "benefitsandleave",
-          sections: [
-            {
-              name: "section page"
-            }
-          ]
-        },
-        {
-          name: "Other Support",
-          link: "benefitsandleave",
-          sections: [
-            {
-              name: "section page"
-            }
-          ]
-        },
-      ]
+      categories: [],
+      categoryIDs: [360006111092, 360006111372, 360006111192, 360006111072, 360006111172, 360006131271],
     }
-  }
+  },
+  
+  methods: {
+    renderBasedOnTags () {
+      const tags = HelpCenter.user.tags;
+      const footerLinksUSPROnly = document.getElementsByClassName("footer-link-us-pr-only");
+      if(tags.includes('office-united_states_of_america') || tags.includes('office-canada') || tags.includes('office-puerto_rico')) {
+        this.categories[this.categories.length - 2].show = true;
+
+        if (tags.includes('office-canada')) {
+          [...footerLinksUSPROnly].forEach(ele => ele?.remove());
+        }
+      } else {
+        const employeeRelationsCategory = document.getElementById("360006111172");
+        
+        this.categories[this.categories.length - 2].show = false;
+
+        [...footerLinksUSPROnly].forEach(ele => ele?.remove());
+        employeeRelationsCategory?.remove();
+      }
+    },
+    async fetchCategories () {
+      try {
+        const getCategories = await fetch(`/api/v2/help_center/${HelpCenter.user.locale}/categories`);
+        const data = await getCategories.json();
+
+        data.categories.forEach(category => {
+          if (this.categoryIDs.includes(category.id)) {
+            const newCategory = {...category, show: true, sections: [], showSections: false};
+            this.categories.push(newCategory);
+          }
+        })
+        this.renderBasedOnTags();
+        this.fetchSections();
+
+      } catch (error) {
+        console.error(error);
+      }
+      
+    },
+
+    async fetchSections () {
+      try {
+        let response = await this.paginatedFetch(`/api/v2/help_center/${HelpCenter.user.locale}/sections`, 'sections');
+
+        response.forEach(section => {
+          const inCategory = this.categories.find(category => category.id === section.category_id)
+          if (inCategory) {
+            inCategory.sections.push(section);
+          }
+        })
+
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async paginatedFetch(url, key, page = 1, previousResponse = []) {
+      try {
+        const response = await fetch(`${url}?per_page=100&page=${page}`);
+        const responseJSON = await response.json();
+
+        const data = [...previousResponse, ...responseJSON[key]];
+        if (!!responseJSON.next_page) {
+          page++;
+          return this.paginatedFetch(url, key, page, data);
+        }
+        return data;
+      } catch (error) {
+        console.log(`Error fetching ${key} API`);
+      }
+    },
+
+  },
+
+ 
+
+  created() {
+    this.fetchCategories();
+  },
 }
 
 var app = new Vue({
   el: '#headerNav',
-  // store: window.store,
   render: h => h(Header),
 });
