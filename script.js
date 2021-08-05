@@ -160,12 +160,18 @@ document.addEventListener('DOMContentLoaded', function() {
     toggle.focus();
   }
 
-  var burgerMenu = document.querySelector('.header .menu-button');
+  var burgerMenu = document.querySelector('.user-nav .menu-button');
   var userMenu = document.querySelector('#user-nav');
+  const headerCategories = document.querySelector('.header-categories-wrapper');
 
   burgerMenu.addEventListener('click', function(e) {
     e.stopPropagation();
-    toggleNavigation(this, userMenu);
+    // toggleNavigation(this, userMenu);
+    if (headerCategories.style.display !== 'block') {
+      headerCategories.style.display = 'block';
+    } else {
+      headerCategories.style.display = 'none';
+    }
   });
 
 
@@ -401,10 +407,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // *************************
   // CUSTOM SCRIPT FOR ABBOTT
+  // *************************
 
   const mainPageContainer = document.querySelector("#main-page-container");
-  const headerSearch = document.querySelector("#header-search");
+  const headerRight = document.querySelector('.header-right');
   const promotedArticlesTitle = document.getElementById("promoted-articles-title");
   const seeAllArticles = document.getElementsByClassName("see-all-articles");
   const sectionTreeTitles = document.getElementsByClassName("section-tree-title");
@@ -415,6 +423,43 @@ document.addEventListener('DOMContentLoaded', function() {
   const categoryContainer = document.querySelector('.category-container');
   const breadcrumbs = document.querySelector('.breadcrumbs');
   const requestsSearch = document.querySelector('.requests-search');
+  const hrServiceCenter = document.querySelector('.header-service-center');
+
+  if (window.innerWidth <= 425) {
+    console.log('inner width: ', window.innerWidth)
+    hrServiceCenter.innerText = "HRSC";
+  } else {
+    hrServiceCenter.innerText = "hr service center"
+  }
+  
+  function limitPromotedArticleItems () {
+    const promotedArticlesItems = document.querySelectorAll('.promoted-articles-item');
+    const articlesArr = Array.from(promotedArticlesItems);
+
+    for (let i = 0; i < articlesArr.length; i++) {
+      if (i > 3) {
+        articlesArr[i].style.display = 'none';
+      }
+    }
+  }
+
+  function removeAllTypesInSearchResults () {
+    const filterList = document.querySelectorAll('.multibrand-filter-list li')
+    const filterArr = Array.from(filterList);
+
+    for (let i = 0; i < filterArr.length; i++) {
+      const item = filterArr[i].children[0]
+      const text = item.innerText;
+      if (text.includes('ALL')) {
+        item.style.display = 'none';
+      }
+    }
+  }
+
+  removeAllTypesInSearchResults();
+
+  limitPromotedArticleItems();
+
 
   // ADD A LINK TO THE BREADCRUMB ON CATEGORY PAGE
   if (categoryContainer) {
@@ -450,7 +495,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   if (requestsHeading) {
-    requestsHeading.innerText = "My Cases"
     requestsSearch.placeholder = "SEARCH MY REQUESTS"
   }
 
@@ -466,18 +510,10 @@ document.addEventListener('DOMContentLoaded', function() {
     recentArticlesTitle.innerText = "Recently viewed"
   }
 
-  
-
   // REMOVING SEARCHBAR IN HEADER ON THE MAINPAGE
   if (mainPageContainer) {
-    headerSearch.remove();
-    searchbar[0].placeholder = "search hr service center";
-  } else {
-    searchbar[0].placeholder = "search"
-  }  
-
-  // zE('webWidget:on', 'open', function() {
-  //   console.log('The widget has been opened!');
-  // });
+    headerRight.remove();
+  } 
+  searchbar[0].placeholder = ""
 
 });

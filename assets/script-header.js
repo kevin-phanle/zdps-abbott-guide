@@ -22,7 +22,6 @@ const template = `
         </li>
       </ul>
     </nav>
-  </div>
 `;
 
 const Header = { 
@@ -30,42 +29,59 @@ const Header = {
   data() {
     return {
       categories: [],
-      categoryIDs: [360006111092, 360006111372, 360006111192, 360006111072, 360006111172, 360006131271],
+      categoryIDs: [360006111172, 360006111072, 360006111092, 360006111192, 360006111372, 360006131271],
     }
   },
   
   methods: {
+
     renderBasedOnTags () {
       const tags = HelpCenter.user.tags;
       const footerLinksUSPROnly = document.getElementsByClassName("footer-link-us-pr-only");
+
       if(tags.includes('office-united_states_of_america') || tags.includes('office-canada') || tags.includes('office-puerto_rico')) {
         this.categories[this.categories.length - 2].show = true;
 
         if (tags.includes('office-canada')) {
           [...footerLinksUSPROnly].forEach(ele => ele?.remove());
         }
+
       } else {
         const employeeRelationsCategory = document.getElementById("360006111172");
         
         this.categories[this.categories.length - 2].show = false;
 
         [...footerLinksUSPROnly].forEach(ele => ele?.remove());
+
         employeeRelationsCategory?.remove();
       }
     },
+
+    renderCategories(categories) {
+      categories.forEach(category => {
+        if (this.categoryIDs.includes(category.id)) {
+
+          const newCategory = {...category, show: true, sections: [], showSections: false};
+
+          this.categories.push(newCategory);
+        }
+      })
+
+      this.renderBasedOnTags();
+      this.fetchSections();      
+    },
+
     async fetchCategories () {
       try {
-        const getCategories = await fetch(`/api/v2/help_center/${HelpCenter.user.locale}/categories`);
-        const data = await getCategories.json();
+        if (sessionStorage.getItem('categories') === null) {
+          const getCategories = await fetch(`/api/v2/help_center/${HelpCenter.user.locale}/categories`);
+          const data = await getCategories.json();
+          this.renderCategories(data.categories);
 
-        data.categories.forEach(category => {
-          if (this.categoryIDs.includes(category.id)) {
-            const newCategory = {...category, show: true, sections: [], showSections: false};
-            this.categories.push(newCategory);
-          }
-        })
-        this.renderBasedOnTags();
-        this.fetchSections();
+          sessionStorage.setItem('categories', JSON.stringify(data.categories));
+        } else {
+          this.renderCategories(JSON.parse(sessionStorage.getItem('categories')))
+        }
 
       } catch (error) {
         console.error(error);
@@ -73,17 +89,29 @@ const Header = {
       
     },
 
+    renderSections (sections) {
+      sections.forEach(section => {
+        const inCategory = this.categories.find(category => category.id === section.category_id)
+        if (inCategory) {
+          inCategory.sections.push(section);
+        }
+      })
+
+    },
+
     async fetchSections () {
       try {
-        let response = await this.paginatedFetch(`/api/v2/help_center/${HelpCenter.user.locale}/sections`, 'sections');
+        if (sessionStorage.getItem('sections') === null) {
+          let response = await this.paginatedFetch(`/api/v2/help_center/${HelpCenter.user.locale}/sections`, 'sections');
+          const noSubSections = response.filter(section => section.parent_section_id === null)
 
-        response.forEach(section => {
-          const inCategory = this.categories.find(category => category.id === section.category_id)
-          if (inCategory) {
-            inCategory.sections.push(section);
-          }
-        })
+          this.renderSections(noSubSections);
+          sessionStorage.setItem('sections', JSON.stringify(noSubSections));
 
+        } else {
+          this.renderSections(JSON.parse(sessionStorage.getItem('sections')));
+        }
+        
       } catch (error) {
         console.error(error);
       }
@@ -106,8 +134,6 @@ const Header = {
     },
 
   },
-
- 
 
   created() {
     this.fetchCategories();

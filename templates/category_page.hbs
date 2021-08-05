@@ -1,7 +1,9 @@
 <div class="container">
-  <section class="section hero-alt" id="category-hero">
+  <section class="section hero-alt" id="category-hero" style="background-image: url({{ asset category.id prefix='hero-'
+    suffix='.png' }})">
     <img src={{asset "hero_bottom.svg" }} alt="">
   </section>
+
   <nav class="sub-nav">
     {{breadcrumbs}}
   </nav>
@@ -21,7 +23,7 @@
           <h2 class="section-tree-title">
             {{!-- <a href="{{url}}"> --}}
               {{name}}
-              {{#if articles}}
+              {{#if articles.length}}
               <img src={{ asset 'icon-chevron.svg' }} alt="">
               {{/if}}
               {{!-- </a> --}}
@@ -68,3 +70,13 @@
     </div>
   </div>
 </div>
+
+<script>
+  const currentCategory = window.location.pathname.split('/').slice(-1)[0].split('-')[0];
+  const heroAlt = document.querySelector('.hero-alt');
+
+  if (currentCategory === "360006131271") {
+    heroAlt.style.backgroundPosition = "center bottom";
+  }
+
+</script>

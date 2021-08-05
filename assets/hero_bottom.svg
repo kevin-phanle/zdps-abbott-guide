@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="960px" height="146px" viewBox="0 0 960 146" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="960px" height="148px" viewBox="0 0 960 148" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Combined Shape</title>
     <g id="First-Round-Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M0.0350267221,2.44811495 C1.64279037,82.8299396 47.9868542,123.020852 139.067218,123.020852 L139.067218,123.020852 L893.866667,123.020852 C930.133333,123.020852 952.177778,130.680568 960,146 L960,146 L960,-4.54747351e-13 L960,0 L960,146 L960,146 L1.8189894e-12,146 L1.8189894e-12,146 L1.8189894e-12,0 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+        <path d="M-1.36833478e-08,-0.190030616 C0.711111107,83.0674922 47.0668505,124.696254 139.067218,124.696254 L139.067218,124.696254 L893.866667,124.696254 C930.133333,124.696254 952.177778,132.135894 960,147.015175 L960,147.015175 L9.09494702e-13,147.015175 L9.09494702e-13,147.015175 Z" id="Combined-Shape" fill="#FFFFFF"></path>
     </g>
 </svg>

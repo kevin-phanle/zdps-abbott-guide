@@ -8,17 +8,19 @@
     <aside class="search-results-sidebar">
       {{#if source_filters}}
       <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
-        <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12"
-            aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
-            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5" />
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12"
-            aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
-            <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3" />
-          </svg>
-        </button>
-        <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_source'}}</h3>
+        <div class="search-sidebar-header">
+          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_source'}}</h3>
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12"
+              aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
+              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12"
+              aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
+              <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3" />
+            </svg>
+          </button>
+        </div>
         <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
           {{#each source_filters}}
           <li>
@@ -39,17 +41,19 @@
       {{/if}}
       {{#if type_filters}}
       <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
-        <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12"
-            aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
-            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5" />
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12"
-            aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
-            <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3" />
-          </svg>
-        </button>
-        <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_type'}}</h3>
+        <div class="search-sidebar-header">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12"
+              aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
+              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12"
+              aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
+              <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3" />
+            </svg>
+          </button>
+          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_type'}}</h3>
+        </div>
         <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
           {{#each type_filters}}
           <li>
@@ -187,10 +191,7 @@
                   {{/each}}
                 </ol>
               </li>
-              {{#unless is_external}}
-              <li class="meta-data">{{author.name}}</li>
-              {{/unless}}
-              <li class="meta-data">{{date created_at}}</li>
+
             </ul>
             <div class="search-results-description">{{text}}</div>
           </article>
@@ -203,6 +204,10 @@
         {{#link 'help_center'}}
         {{t 'browse_help_center'}}
         {{/link}}
+        /
+        <a class="search-no-results-get-support" onclick="zE('webWidget', 'open')">
+          {{ dc 'get_support' }}
+        </a>
       </p>
       {{/if}}
     </section>

@@ -57,12 +57,13 @@
       <section class="articles">
         <h2 id="promoted-articles-title">{{ dc 'trending_topics'}}</h2>
         <ul class="article-list promoted-articles">
-          {{#each promoted_articles}}
+          {{#each promoted_articles }}
           <li class="promoted-articles-item">
             <a href="{{url}}">
               {{title}}
             </a>
           </li>
+
           {{/each}}
         </ul>
       </section>
@@ -75,7 +76,7 @@
         {{#if ../has_multiple_categories}}
         <li class="blocks-item" id="{{id}}">
           <a href='{{url}}' class="blocks-item-link">
-            <img src="{{ asset id prefix='category-' suffix='.svg' }}" alt="">
+            <img src="{{ asset id prefix='category-' suffix='.png' }}" alt="">
             <span class=" blocks-item-title">{{name}}</span>
             <span class="blocks-item-description">{{excerpt description}}</span>
           </a>

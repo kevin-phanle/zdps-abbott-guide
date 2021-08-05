@@ -2,9 +2,13 @@
   <section class="section hero-alt">
     <img src={{asset 'hero_bottom.svg' }} alt="">
   </section>
+  {{!-- <template id="heroTemplate"></template> --}}
   <nav class="sub-nav">
     {{breadcrumbs}}
   </nav>
+
+  {{!--
+  <script type='module' src='{{asset "script-hero.js"}}'></script> --}}
 
   <div class="section-container">
     <section id="main-content" class="section-content">
@@ -68,3 +72,38 @@
     </section>
   </div>
 </div>
+
+<script>
+  const getRawSections = sessionStorage.getItem('sections');
+  const sections = JSON.parse(getRawSections);
+  const currentSectionId = window.location.pathname.split('/').slice(-1)[0].split('-')[0];
+  const section = sections.find(section => section.id === Number(currentSectionId));
+
+  const heroAlt = document.querySelector('.hero-alt');
+
+  var hero360006111172 = "{{asset 'hero-360006111172.png'}}";
+  var hero360006111072 = "{{asset 'hero-360006111072.png'}}";
+  var hero360006111092 = "{{asset 'hero-360006111092.png'}}";
+  var hero360006111192 = "{{asset 'hero-360006111192.png'}}";
+  var hero360006111372 = "{{asset 'hero-360006111372.png'}}";
+  var hero360006131271 = "{{asset 'hero-360006131271.png'}}";
+
+  const assetArr = [hero360006111172, hero360006111072, hero360006111092, hero360006111192, hero360006111372, hero360006131271];
+
+  const categoriesIDs = [360006111172, 360006111072, 360006111092, 360006111192, 360006111372, 360006131271];
+
+  const images = {};
+
+  categoriesIDs.forEach((id, i) => {
+    images[id] = assetArr[i];
+  });
+
+  const path = `url(${images[section.category_id]})`;
+
+  heroAlt.style.backgroundImage = path;
+
+  if (section.category_id === 360006131271) {
+    heroAlt.style.backgroundPosition = "center bottom";
+  }
+
+</script>

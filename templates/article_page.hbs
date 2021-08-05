@@ -109,9 +109,6 @@
             {{vote 'up' role='radio' class='button article-vote article-vote-up' selected_class="button-primary"}}
             {{vote 'down' role='radio' class='button article-vote article-vote-down' selected_class="button-primary"}}
           </div>
-          <small class="article-votes-count">
-            {{vote 'label' class='article-vote-label'}}
-          </small>
         </div>
         {{/with}}
 
@@ -145,3 +142,38 @@
     </div>
   </div>
 </div>
+
+<script>
+  var category_slug = document.querySelector("ol.breadcrumbs li:nth-child(2) > a[href*='categories/'")
+    .getAttribute("href")
+    .split("categories/")[1]
+    .split("-")[0];
+
+  const heroAlt = document.querySelector('.hero-alt');
+
+  var hero360006111172 = "{{asset 'hero-360006111172.png'}}";
+  var hero360006111072 = "{{asset 'hero-360006111072.png'}}";
+  var hero360006111092 = "{{asset 'hero-360006111092.png'}}";
+  var hero360006111192 = "{{asset 'hero-360006111192.png'}}";
+  var hero360006111372 = "{{asset 'hero-360006111372.png'}}";
+  var hero360006131271 = "{{asset 'hero-360006131271.png'}}";
+
+  const assetArr = [hero360006111172, hero360006111072, hero360006111092, hero360006111192, hero360006111372, hero360006131271];
+
+  const categoriesIDs = [360006111172, 360006111072, 360006111092, 360006111192, 360006111372, 360006131271];
+
+  const images = {};
+
+  categoriesIDs.forEach((id, i) => {
+    images[id] = assetArr[i];
+  });
+
+  const path = `url(${images[category_slug]})`;
+
+  if (category_slug === "360006131271") {
+    heroAlt.style.backgroundPosition = "center bottom";
+  }
+
+  heroAlt.style.backgroundImage = path;
+
+</script>
